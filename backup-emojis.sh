@@ -9,7 +9,6 @@ for e in $(jq 'keys|@sh' <<< $emojiList | tr -d \' | tr -d \"); do
   url=$(jq -r ".[\"$e\"]" <<< $emojiList)
   if grep -q -E '^alias:' <<< $url; then
     #alias
-    echo $url
     file=$BACKUPFOLDER/${e}.alias
     sed -e 's/^alias:\(.*\)/\1/' <<< $url > $file
   else
