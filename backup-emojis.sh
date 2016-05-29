@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 TOKEN=$(cat token)
 BACKUPFOLDER=emojis
 mkdir -p $BACKUPFOLDER
