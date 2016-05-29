@@ -1,4 +1,6 @@
 #!/bin/bash
+cd "$(dirname "$0")"
+
 TOKEN=$(cat token)
 BACKUPFOLDER=emojis
 mkdir -p $BACKUPFOLDER
