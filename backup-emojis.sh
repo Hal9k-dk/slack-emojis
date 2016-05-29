@@ -12,7 +12,6 @@ for e in $(jq 'keys|@sh' <<< $emojiList | tr -d \' | tr -d \"); do
     file=$BACKUPFOLDER/${e}.alias
     sed -e 's/^alias:\(.*\)/\1/' <<< $url > $file
   else
-    continue
     #url
     suffix=${url##*.}
     file=$BACKUPFOLDER/${e}.$suffix
