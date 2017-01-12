@@ -18,7 +18,13 @@ for e in $(jq 'keys|@sh' <<< $emojiList | tr -d \' | tr -d \"); do
     suffix=${url##*.}
     file=$BACKUPFOLDER/${e}.$suffix
     if [ -f $file ]; then
-      curl -s -o $file -z $file $url
+      curl -s -o $file.tmp $url
+      if $(cmp --silent $file.tmp $file); then
+	rm $file.tmp
+      else
+        mv $file $file.$(date +%s)
+        mv $file.tmp $file
+      fi
     else
       curl -s -o $file $url
     fi
