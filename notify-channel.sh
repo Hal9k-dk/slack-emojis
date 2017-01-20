@@ -11,13 +11,6 @@ if [ -n "$message" ]; then
     --data-urlencode "username=Emojiconsan" \
     --data-urlencode "token=$TOKEN" \
     --data-urlencode "channel=#meta" \
-    --data-urlencode "icon_emoji=:guardsman:" \
-    https://hal9k.slack.com/api/chat.postMessage &>/dev/null
-  curl -s \
-    --data-urlencode "text=$message" \
-    --data-urlencode "username=Emojiconsan" \
-    --data-urlencode "token=$TOKEN" \
-    --data-urlencode "channel=#random" \
-    --data-urlencode "icon_emoji=:guardsman:" \
+    --data-urlencode "icon_emoji=:yes_sir:" \
     https://hal9k.slack.com/api/chat.postMessage &>/dev/null
 fi
