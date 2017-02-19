@@ -21,5 +21,5 @@
 # 
 # m h  dom mon dow   command
 */15 * * * * ~/slack-emojis/backup-emojis.sh
-*/15 * * * * ~/slack-emojis/list-missing.sh | ~/slack-emojis/notify-channel.sh
-0 9 * * * ~/slack-emojis/talk.sh random "$(fortune /usr/share/games/fortunes/off/spam)"
+10,25,40,55 * * * * ~/slack-emojis/list-missing.sh | ~/slack-emojis/notify-channel.sh
+0 11 * * * ~/slack-emojis/talk.sh random "$(/usr/games/fortune /usr/share/games/fortunes/off/spam)"
