@@ -19,17 +19,17 @@ for e in $(jq 'keys|@sh' <<< $emojiList | tr -d \' | tr -d \"); do
     suffix=${url##*.}
     file=$BACKUPFOLDER/${e}.$suffix
     emoji=$(basename $file | cut -f 1 -d '.')
-    if [ -f $file ]; then
-      curl -s -o ${file}.tmp $url
-      if $(cmp --silent ${file}.tmp $file); then
-        rm $file.tmp
+    if [ -f "$file" ]; then
+      curl -s -o "${file}.tmp" "$url"
+      if $(cmp --silent "${file}.tmp" "$file"); then
+        rm "${file}.tmp"
       else
-        mv $file ${file}.$(date +%s)
-        mv ${file}.tmp $file
+        mv "$file" "${file}.$(date +%s)"
+        mv "${file}.tmp" "$file"
         echo "Emoji changed: $emoji -> :$emoji:" | $NOTIFYCMD
       fi
     else
-      curl -s -o $file $url
+      curl -s -o "$file" "$url"
       echo "New emoji: $emoji -> :$emoji:" | $NOTIFYCMD
     fi
   fi
