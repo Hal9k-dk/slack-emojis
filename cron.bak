@@ -20,5 +20,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-*/15 * * * * ~/slack-emojis/backup-emojis.sh
-10,25,40,55 * * * * ~/slack-emojis/list-missing.sh | ~/slack-emojis/notify-channel.sh
+*/15 * * * * flock -n /tmp/slack.lck ~/slack-emojis/backup-emojis.sh
+10,25,40,55 * * * * flock -n /tmp/slack.lck ~/slack-emojis/list-missing.sh
