@@ -1,12 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-TOKEN=$(cat token)
+TOKEN="$(cat token)"
 BACKUPFOLDER=emojis
 NOTIFYCMD=~/slack-emojis/notify-channel.sh
 mkdir -p $BACKUPFOLDER
 
-emojiList=$(curl -s "https://slack.com/api/emoji.list?token=$TOKEN" | jq '.emoji')
+emojiList="$(curl -s "https://slack.com/api/emoji.list?token=$TOKEN" | jq '.emoji')"
 
 for e in $(jq 'keys|@sh' <<< $emojiList | tr -d \' | tr -d \"); do
   url=$(jq -r ".[\"$e\"]" <<< $emojiList)
