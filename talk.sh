@@ -5,7 +5,7 @@ TOKEN=$(cat token)
 
 channel=$1
 shift
-message="$@"
+message="$*"
 
 if [ -n "$message" ]; then 
   curl -s \

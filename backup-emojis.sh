@@ -21,7 +21,7 @@ for e in $(jq 'keys|@sh' <<< "$emojiList" | tr -d \' | tr -d \"); do
     emoji=$(basename "$file" | cut -f 1 -d '.')
     if [ -f "$file" ]; then
       curl -s -o "${file}.tmp" "$url"
-      if $(cmp --silent "${file}.tmp" "$file"); then
+      if cmp --silent "${file}.tmp" "$file"; then
         rm "${file}.tmp"
       else
         mv "$file" "${file}.$(date +%s)"
