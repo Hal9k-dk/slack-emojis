@@ -8,7 +8,7 @@ mkdir -p $BACKUPFOLDER
 
 emojiList=$(curl -s "https://slack.com/api/emoji.list?token=$TOKEN" | jq '.emoji')
 
-for key in $(find $BACKUPFOLDER/ -print0 | xargs -0 -n 1 basename | cut -f 1 -d '.' | sort -u) ; do
+for key in $(find $BACKUPFOLDER/ -type f -print0 | xargs -0 -n 1 basename | cut -f 1 -d '.' | sort -u) ; do
   if [ "$(jq -r ".[\"$key\"]" <<< "$emojiList")" = null ]; then
     echo "Emoji deleted: $key -> :$key:" | $NOTIFYCMD
   fi
